@@ -59,7 +59,24 @@ This is a critical step to resolve the current build error.
     ```bash
     npx react-native run-android
     ```
----
+---📁 Project Structure
+LYNQChatApp/
+├── src/
+│   ├── api/              # For external API calls (e.g., link verification, translation)
+│   ├── assets/           # For images, fonts, and other static assets
+│   ├── components/       # For reusable UI components
+│   ├── config/           # For configuration files (e.g., Firebase config)
+│   ├── features/         # For feature-specific code
+│   │   ├── auth/         # For authentication-related code
+│   │   ├── chat/         # For real-time chat functionality
+│   │   ├── linkVerification/ # For link scanning and verification
+│   │   ├── media/        # For media sharing functionality
+│   │   ├── translation/  # For real-time translation
+│   │   └── wordLookup/   # For word lookup functionality
+│   ├── navigation/       # For screen navigation and routing
+│   ├── screens/          # For the main screens of the app
+│   ├── services/         # For core services (e.g., encryption, WebSocket)
+│   └── utils/            # For utility functions and helpers
 
 ## 📝 Original App Concept
 
