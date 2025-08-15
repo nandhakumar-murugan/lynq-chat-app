@@ -3,76 +3,101 @@
 📱 LYNQ – A Privacy-First, Smart Messaging App
 LYNQ is an end-to-end encrypted, cross-platform messaging application built to redefine secure and intelligent communication. It combines cutting-edge cryptography, real-time communication, and AI-powered features to ensure not just privacy but also a smarter user experience. Designed for mobile platforms, LYNQ empowers users to communicate securely, lookup word meaning and verify shared content.
 
-🚀 Features
-🔐 Basic Features:
-Real-Time Chat – Send and receive messages instantly with WebSockets.
+---
 
-End-to-End Encryption – All messages are protected using X25519 (Key Exchange), ChaCha20-Poly1305(AEAD) and Poly1305 (MAC).
+## 🚀 Project Status (As of August 15, 2025)
 
-User Authentication – Secure login and registration system using Firebase Auth.
+This project is currently in the initial setup phase. Here's a summary of what has been completed:
 
-Auto-Link Verification – Links shared in messages are automatically scanned for phishing or malicious content.
+*   **Project Initialization:** A new React Native project has been created in the `LYNQChatApp` directory.
+*   **Firebase Integration:**
+    *   The core Firebase dependencies (`@react-native-firebase/app` and `@react-native-firebase/auth`) have been added to the project.
+    *   The native Android project has been configured to connect with Firebase. The `build.gradle` files have been updated, and the `google-services.json` file has been added.
 
-Media Sharing – Securely share images and files within chat.
+### 🚨 Current Blockers
+The project is currently **not buildable** due to a local environment configuration issue.
+1.  **Android SDK Location:** The build will fail until the local path to the Android SDK is correctly configured.
+2.  **Emulator/Device:** An Android emulator must be running or a physical device must be connected to launch the application.
 
-Group Chats – Encrypted group chat support with synchronized messages.
+---
 
+## 🛠️ Development Setup
 
-📡 Advanced Features:
+Follow these steps to get the development environment up and running.
 
-Auto-Blocks Unsafe Links – If a malicious link is detected, the link can be blocked until the user approves it.
-Word Lookup - Lookup for word meanings within the chat itself.
-Realtime Translation to English - Translate a message of a different language to english for understanding.
+### Prerequisites
+*   Node.js
+*   Java Development Kit (JDK)
+*   Android Studio & Android SDK
 
+### 1. Clone the Repository
+```bash
+git clone <repository-url>
+cd LYNQ-Chat-App-main
+```
 
-🧠 How It Works
-User Signup/Login:
+### 2. Install Dependencies
+Navigate to the React Native project directory and install the required npm packages.
+```bash
+cd LYNQChatApp
+npm install
+```
 
-Generates identity and encryption keys.
+### 3. Configure Android SDK
+This is a critical step to resolve the current build error.
+1.  Create a new file named `local.properties` inside the `LYNQChatApp/android` directory.
+2.  Open the `local.properties` file and add the following line, **replacing `path/to/your/android/sdk` with the actual path to your Android SDK**:
+    ```
+    sdk.dir=path/to/your/android/sdk
+    ```
+    *Example on Windows:* `sdk.dir=C:\\Users\\YourUsername\\AppData\\Local\\Android\\Sdk`
+    *Example on macOS:* `sdk.dir=/Users/YourUsername/Library/Android/sdk`
 
-Authenticates with backend using hashed credentials andFirebase.
+### 4. Run the Application
+1.  Open Android Studio and start an Android emulator, or connect a physical Android device to your computer.
+2.  Run the following command from the `LYNQChatApp` directory to build and launch the app:
+    ```bash
+    npx react-native run-android
+    ```
+---
 
-Start a Conversation:
+## 📝 Original App Concept
 
-Requests the receiver's pre-keys from the server.
+### Features
+🔐 **Basic Features:**
+*   **Real-Time Chat** – Send and receive messages instantly with WebSockets.
+*   **End-to-End Encryption** – All messages are protected using X25519 (Key Exchange), ChaCha20-Poly1305(AEAD) and Poly1305 (MAC).
+*   **User Authentication** – Secure login and registration system using Firebase Auth.
+*   **Auto-Link Verification** – Links shared in messages are automatically scanned for phishing or malicious content.
+*   **Media Sharing** – Securely share images and files within chat.
+*   **Group Chats** – Encrypted group chat support with synchronized messages.
 
-Uses E2EE to establish a secure session.
+📡 **Advanced Features:**
+*   **Auto-Blocks Unsafe Links** – If a malicious link is detected, the link can be blocked until the user approves it.
+*   **Word Lookup** - Lookup for word meanings within the chat itself.
+*   **Realtime Translation to English** - Translate a message of a different language to english for understanding.
 
-Send a Message:
+### How It Works
+*   **User Signup/Login:** Generates identity and encryption keys. Authenticates with backend using hashed credentials and Firebase.
+*   **Start a Conversation:** Requests the receiver's pre-keys from the server. Uses E2EE to establish a secure session.
+*   **Send a Message:** Message is encrypted on the client side. Optionally scanned for unsafe links. Sent to server and relayed to the receiver.
+*   **Receive Message:** Decrypted locally using session keys.
 
-Message is encrypted on the client side.
+### Security Highlights
+*   Uses X25519 (Key Exchange), ChaCha20-Poly1305(AEAD) and Poly1305 (MAC) for true end-to-end encryption.
+*   All messages are encrypted before leaving the device.
+*   No messages are stored in plaintext, even on the server.
+*   Implements forward secrecy, ensuring past messages stay secure even if current keys are compromised.
+*   Auto-blocks malicious messages until user approval based on threat detection APIs.
 
-Optionally scanned for unsafe links.
+### Supported Platforms
+*   **Mobile:** Planned support via React Native
 
-Sent to server and relayed to the receiver.
+---
 
-Receive Message:
-
-Decrypted locally using session keys.
-
-
-
-🔒 Security Highlights
-Uses X25519 (Key Exchange), ChaCha20-Poly1305(AEAD) and Poly1305 (MAC) for true end-to-end encryption.
-
-All messages are encrypted before leaving the device.
-
-No messages are stored in plaintext, even on the server.
-
-Implements forward secrecy, ensuring past messages stay secure even if current keys are compromised.
-
-Auto-blocks malicious messages until user approval based on threat detection APIs.
-
-
-
-📱 Supported Platforms
-
-Mobile : Planned support via React Native
-
-
-🤝 Team
-	Mirdula R
-	Piriyadharshini L K
- 	Tayanithaa N S
-  	Logesh Raj B
-   	Jaisurya S
+### 🤝 Team
+*   Mirdula R
+*   Piriyadharshini L K
+*   Tayanithaa N S
+*   Logesh Raj B
+*   Jaisurya S
